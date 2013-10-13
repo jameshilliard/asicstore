@@ -17,23 +17,26 @@ db.startup();
 var app = express();
 
 app.configure(function(){
-    app.set('views', __dirname + '/views');
-    app.set('view engine', 'jade');
-    
-    app.use(express.favicon());
-    app.use(express.cookieParser());
-    app.use(express.bodyParser());
+  app.set('view engine','html');
+  app.set('views', __dirname + '/views');
+  app.enable('view cache');
+  app.engine('html',require('hogan-express'));
+  app.set('layout', 'layout');
+  app.enable("jsonp callback");
 
-    app.use(express.session({
-        store: new mongoSession({url:config.connection}),
-        cookie: { maxAge: new Date(Date.now() + 181440000)},
-        secret: config.cookie_secret
-        }));
-
-    app.use(passport.initialize());
-    app.use(passport.session());
-    app.use(express.static(__dirname + '/public'));
+  app.use(express.favicon());
+  app.use(express.cookieParser());
+  app.use(express.bodyParser());
   
+  app.use(express.session({
+    store: new mongoSession({url:config.connection}),
+    cookie: { maxAge: new Date(Date.now() + 181440000)},
+    secret: config.cookie_secret
+  }));
+
+  app.use(passport.initialize());
+  app.use(passport.session());
+  app.use(express.static(__dirname + '/public'));
 });
 
 require('./router')(app,passport);
@@ -43,5 +46,5 @@ app.listen(argv.p);
 console.log("Shop Started");
 
 process.on('uncaughtException', function(err) {
-    console.log(err);
+  console.log(err);
 });
