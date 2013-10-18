@@ -13,8 +13,10 @@
 
     <!-- Custom styles for this template -->
     <link href="css/sticky-footer-navbar.css" rel="stylesheet">
+    <link href="css/ui.css" rel="stylesheet">
     <script type="text/javascript" src="js/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
   </head>
   <body>
 
@@ -33,18 +35,24 @@
           <div class="nav-collapse collapse">
             <ul id="menu" class="nav navbar-nav">
               <li id="menu-store"><a href="/">Store</a></li>
-              <li id="menu-login"><a href="/">Login</a></li>
-              <li id="menu-order" class="hidden"><a href="/">Order</a></li>
+              <li id="menu-order"><a href="/">Order</a></li>
             </ul>
           </div><!--/.nav-collapse -->
           <div id="account_menu" class="nav-collapse collapse pull-right -logged-in">
             <ul class="nav">
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" style="padding-right: 100px">
+                  <i class="glyphicon glyphicon-shopping-cart"></i>
                   Cart
+                  <span id="total_info">(0 item) Ƀ0.0000</span>
                   <b class="caret"></b>
                 </a>
                 <ul class="dropdown-menu" style="max-height: 500px; overflow-x: hidden; overflow-y: auto;">
+                  <li>
+                    <div id="cart-box" class="box-cart">
+                      <h3>Shopping Cart</h3>
+                    </div>
+                  </li>
                 </ul>
               </li>
             </ul>

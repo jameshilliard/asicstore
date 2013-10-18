@@ -3,6 +3,7 @@ var Schema = mongoose.Schema;
 
 var ProductSchema = new Schema({
   name: { type: String, required: true },
+  name_short : { type: String, required:true},
 
   shipping: {
     weight: { type: Number, required: false },
@@ -15,7 +16,7 @@ var ProductSchema = new Schema({
 
   price: { type: Number, required: true },
 
-  details: {
+  detail: {
     description: { type: String, required: false }
   }
 });

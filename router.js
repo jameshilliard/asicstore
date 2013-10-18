@@ -14,6 +14,7 @@ var checkout = require('./routes/checkout');
 
 module.exports = function(app,passport) {
   app.get('/',function(req,res) {
+    req.session.last = "main";
     db.getProducts(function(err,products) {
       if(err) console.log(err);
       res.render('main',{'products':products});
@@ -38,6 +39,6 @@ module.exports = function(app,passport) {
   // app.post('/cart/add/:id',cart.addProduct);
   // app.post('/cart/rem/:id',cart.remProduct);
 
-  
+  app.get('/cart/list', cart.list);
   
 };

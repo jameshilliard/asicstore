@@ -1,0 +1,17 @@
+.box {
+background-color: #FFFFFF;
+border: 1px solid #DDDDDD;
+border-radius: 4px 4px 4px 4px;
+margin: 15px 0;
+padding: 10px 19px 14px;
+position: relative;
+}
+
+.muted {
+color: #999;
+}
+
+.box-cart {
+margin: 20px 20px 0px 20px;
+}
+

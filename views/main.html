@@ -1,10 +1,30 @@
 <div class="container">
   <div class="row">
     {{#products}}
-      <div class="col-sm-4">
-        <h4>{{name}}</h4>
-        <h5>{{price}}</h5>
+      <div class="col-lg-6">
+        <div class="box" style="height:575px;">
+          <h3>{{name}}</h3>
+          <br>
+          <div>
+            <div class="row" style="margin-left:10px;">
+              <div class="col-lg-6" style="height:390px;overflow:hidden;">
+                <img class="templateImage" src="img/{{name_short}}.jpg" border="0">
+              </div>
+              <div class="col-lg-6" style="height:390px;overflow:hidden;">
+                {{&detail}}
+              </div>
+
+              <br>
+              <hr>
+              <br>Price: <strong>Ƀ{{price}}</strong>
+              <br><br>
+              <p>
+                <button productid="32" type="button" class="addToCart btn btn-large btn-success">Add to cart</button>
+              </p>
+            </div>
+          </div>
+        </div>
       </div>
     {{/products}}
   </div>
-</div>  
+</div>
