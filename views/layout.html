@@ -38,19 +38,19 @@
               <li id="menu-order"><a href="/">Order</a></li>
             </ul>
           </div><!--/.nav-collapse -->
-          <div id="account_menu" class="nav-collapse collapse pull-right -logged-in">
-            <ul class="nav">
-              <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" style="padding-right: 100px">
-                  <i class="glyphicon glyphicon-shopping-cart"></i>
-                  Cart
-                  <span id="total_info">(0 item) Ƀ0.0000</span>
-                  <b class="caret"></b>
-                </a>
-                <ul class="dropdown-menu" style="max-height: 500px; overflow-x: hidden; overflow-y: auto;">
+          <div id="account_menu" class="btn-group pull-right">
+            <i class="glyphicon glyphicon-shopping-cart"></i>
+            <a id="open-cart" class="open noboxshadow dropdown-toggle" data-toggle="dropdown" href="#" style="box-shadow:none;color:FF8C00;">My Cart<b class="caret"></b>
+</a>
+            <span id="total_info">(0 item) Ƀ0.0000</span>
+
+            <ul class="dropdown-menu mini-cart">
                   <li>
-                    <div id="cart-box" class="box-cart">
-                      <h3>Shopping Cart</h3>
+                    <div id="cart-box" class="box-cart" style="width:320px">
+                      <div class="box-content clearfix">
+                  	<h3>Shopping Cart</h3>&nbsp;<span id="checkout-wait" style="width:15%;display:none;"><img src="img/misc/wait18trans.gif"></span><br>
+		        <div id="shoppingcart"><h3>No items in your cart</h3></div>
+	              </div>
                     </div>
                   </li>
                 </ul>
