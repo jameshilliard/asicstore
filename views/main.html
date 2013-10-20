@@ -1,30 +1,47 @@
-<div class="container">
-  <div class="row">
-    {{#products}}
-      <div class="col-lg-6">
-        <div class="box" style="height:575px;">
-          <h3>{{name}}</h3>
-          <br>
-          <div>
-            <div class="row" style="margin-left:10px;">
-              <div class="col-lg-6" style="height:390px;overflow:hidden;">
-                <img class="templateImage" src="img/{{name_short}}.jpg" border="0">
-              </div>
-              <div class="col-lg-6" style="height:390px;overflow:hidden;">
-                {{&detail}}
-              </div>
+<script>
+  Catalog = [];
+  {{#products}}
+    Catalog.push(
+    {
+    "id":"{{name_short}}",
+    "name":"{{name}}",
+    "image":"{{name_short}}.jpg",
+    "price":{{price}},
+    "formatedPrice":" ฿{{price}}"
+    }
+    );
+  {{/products}}
+</script>
 
-              <br>
-              <hr>
-              <br>Price: <strong>Ƀ{{price}}</strong>
-              <br><br>
-              <p>
-                <input type="number" value=1 min=1></input><button productid="32" type="button" class="addToCart btn btn-success">Add to cart</button>
-              </p>
-            </div>
+
+<div class="row" id="ebooks">
+  {{#products}}
+  <div class="span6" >
+    <div class="box" style="height:575px;">
+      <h3>{{name}}</h3><br/>
+      <div class="mainArea">
+        <div class="row" style="margin-left:10px;">
+          <div class="span3" style="height:390px;overflow:hidden;">
+            <img class="templateImage" src="img/{{name_short}}.jpg" border="0">
           </div>
+          <div class="span2" style="height:390px;overflow:hidden;">
+            {{&detail}}
+            <br/><br/>
+          </div>
+          <br/>
+
+          <hr/>
+
+          Price: <strong>฿{{price}}</strong><br/><br/>
+
+          <p>
+            <button productid="{{name_short}}" type="button" class="addToCart btn btn-success">Add to cart</button>
+          </p>
+
         </div>
       </div>
-    {{/products}}
+    </div>
   </div>
+  {{/products}}
 </div>
+

@@ -21,9 +21,8 @@ app.configure(function(){
   app.set('views', __dirname + '/views');
   app.enable('view cache');
   app.engine('html',require('hogan-express'));
-  app.set('layout', 'layout');
+  app.set('layout', 'index');
   app.enable("jsonp callback");
-
   app.use(express.favicon());
   app.use(express.cookieParser());
   app.use(express.bodyParser());

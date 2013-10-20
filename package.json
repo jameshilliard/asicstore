@@ -4,6 +4,7 @@
     "dependencies" : {
         "express" : "*",
         "hogan.js" : "*",
+	"hogan-express" : "*",
         "passport" : "*",
         "passport-local" : "*",
         "connect-mongo" : "*",
