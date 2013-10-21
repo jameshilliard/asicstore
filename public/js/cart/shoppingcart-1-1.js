@@ -443,11 +443,11 @@ function addBindings() {
 
   $(".addToCart").click(function(){ 
     fadeInContent();
-
+    
     var sku = $(this).attr("productId");
     var qty = '#quantity-productId-'+ sku;
     var prop = '#property-productId-'+ sku;
-    var quantity = $(qty).val();
+    var quantity = parseInt($(qty).val());
     var property=null;
     if(prop) {
       property = $(prop).val();
@@ -934,7 +934,7 @@ function removeItem(sku) {
 
 function addToCart(sku, qty, name, price, property, updateQty) {
 
-  //alert('add to cart ' + sku + ' qty ' + qty + ' name ' + name + ' price ' + ' property ' + property + ' updateQty ' + updateQty);
+  alert('add to cart ' + sku + ' qty ' + qty + ' name ' + name + ' price ' + ' property ' + property + ' updateQty ' + updateQty);
 
   var products = $.cookie( 'sku' );
   if(products!=null) {
@@ -973,7 +973,7 @@ function addToCart(sku, qty, name, price, property, updateQty) {
 	  }
 
 
-	  q = parseInt(q) + 1;
+	  q = parseInt(q) + qty;
 	  found = true;
 	}
 	if(i==0) {
@@ -995,9 +995,9 @@ function addToCart(sku, qty, name, price, property, updateQty) {
 	if(!product) {
 	  return null;
 	}
-	if(product.filename) {
-	  qty = 1;
-	}
+	// if(product.filename) {
+	//   qty = 1;
+	// }
 
 	resultLine = resultLine + '|' + sku + '&' + qty;
 	if(property && property!=null) {
