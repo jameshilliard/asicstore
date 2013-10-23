@@ -21,6 +21,10 @@ module.exports = function(app,passport) {
     });
   });
 
+  app.get('/order',function(req,res) {
+    res.render('order');
+  });
+
   // app.get('/account/register',account.register);
   // app.get('/account/home',ensureAuth,account.home);
   // app.post('/account/login', function(req,res,next) {

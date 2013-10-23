@@ -134,7 +134,7 @@ $(document).ready(function(){
 
 function fadeInContent() {
   if($('#addToCartMessage')) {
-    $('#container').fadeTo( 'slow', .2 );
+    $('#container').fadeTo( 'fast', .2 );
     $('#addToCartMessage').fadeIn();
   }
 }
@@ -142,8 +142,8 @@ function fadeInContent() {
 
 function fadeOutContent() {
   if($('#addToCartMessage')) {
-    $('#addToCartMessage').fadeOut();
-    $('#container').fadeTo( 'slow', 1 );
+    $('#addToCartMessage').fadeOut('fast');
+    $('#container').fadeTo( 'fast', 1 );
   }
 }
 
@@ -238,21 +238,21 @@ function fillCart() {
       var FOOTER_HEADER= '';
       var MESSAGE_BLOCK = '<span id="message">&nbsp;</span>';
       var WAIT_BLOCK = '';
-      var PP_MESSAGE_BLOCK = '<img src="https://www.paypal.com/en_US/i/bnr/horizontal_solution_PPeCheck.gif" border="0" width="110" alt="Checkout with paypal">';
-      var PP_BUTTON_BLOCK = '<a href="javascript:invokePayPal();" id="paypal-checkout"><img border="0" src="https://www.paypal.com/en_US/i/btn/btn_xpressCheckout.gif" align="right"></a>';
 
+      var BLOCKCHAIN_LOGO = '<img src="img/bitcoin-accepted.png" border="0" width="110" alt="Checkout with paypal">';
+      var CHECKOUT_BUTTON = '<input type="submit" value="Proceed To Checkout" class="btn btn-primary btn-large" onclick="invokeCheckout()">';
 
       //globalproducts = globalproducts + FOOTER_HEADER;
       
       var FOOTER = FOOTER_HEADER + '<table class="table-nr" style="margin-bottom: 0px"><tbody><tr style="background-color: transparent;"><td colspan="2" style="border-top: none;">' + MESSAGE_BLOCK + '</td></tr>';
-      FOOTER = FOOTER + '<tr style="background-color: transparent"><td style="border-top: none;">' + '' + '</td><td style="border-top: none;"><div class="pull-right">' + '' + '</div></td></tr>';
+      FOOTER = FOOTER + '<tr style="background-color: transparent"><td style="border-top: none;">' + BLOCKCHAIN_LOGO + '</td><td style="border-top: none;"><div class="pull-right">' + CHECKOUT_BUTTON + '</div></td></tr>';
 
       FOOTER = FOOTER + '</tbody></table>';
       
 
-      //globalproducts = globalproducts + '<div><img src="https://www.paypal.com/en_US/i/bnr/horizontal_solution_PPeCheck.gif" border="0" width="110" alt="Checkout with paypal"><a href="javascript:invokePayPal();" id="paypal-checkout"><img border="0" src="https://www.paypal.com/en_US/i/btn/btn_xpressCheckout.gif" align="right"></a></div>';
+      // globalproducts = globalproducts + '<div><img src="https://www.paypal.com/en_US/i/bnr/horizontal_solution_PPeCheck.gif" border="0" width="110" alt="Checkout with paypal"><a href="javascript:invokePayPal();" id="paypal-checkout"><img border="0" src="https://www.paypal.com/en_US/i/btn/btn_xpressCheckout.gif" align="right"></a></div>';
 
-      //globalproducts = globalproducts + '<div><span id="message" style="float:left;width:85%;">&nbsp;</span><span id="checkout-wait" style="float:right;text-align:right;width:15%;display:none;"><img src="img/misc/wait18trans.gif"></span><br/></div>';
+      // globalproducts = globalproducts + '<div><span id="message" style="float:left;width:85%;">&nbsp;</span><span id="checkout-wait" style="float:right;text-align:right;width:15%;display:none;"><img src="img/misc/wait18trans.gif"></span><br/></div>';
 
       globalproducts = globalproducts + FOOTER;
 
@@ -934,7 +934,7 @@ function removeItem(sku) {
 
 function addToCart(sku, qty, name, price, property, updateQty) {
 
-  alert('add to cart ' + sku + ' qty ' + qty + ' name ' + name + ' price ' + ' property ' + property + ' updateQty ' + updateQty);
+//  alert('add to cart ' + sku + ' qty ' + qty + ' name ' + name + ' price ' + ' property ' + property + ' updateQty ' + updateQty);
 
   var products = $.cookie( 'sku' );
   if(products!=null) {
