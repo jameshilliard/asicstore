@@ -27,37 +27,21 @@ var labelCheckout = 'Checkout';
 var labelPreparingCheckout = 'Preparing ...';
 var labelTotal = 'Total : ';
 
-
-
-
 //default values
 var currency = '฿';
 var currencyCode = 'BTC';			
 
-
-
-
 //do not edit
-var decimal ="."
+var decimal =".";
 var cookieDurationDays = 10;//number of days in cookie
-var useShoppingCartImage = false;
+var useShoppingCartImage = true;
 var checkoutAdditionalCostMessage = '';//if additional cost is applied, this line must not be null or empty
 var checkoutAdditionalCost = 0;//required, should be 0 or more
 var variableAdditionalCost = 'handling_cart';//can be tax_cart or handling_cart
 
-var payPalUser='';
-var embeddedPayUrl='https://sandbox.paypal.com/webapps/adaptivepayment/flow/pay?paykey=';
-var payPalUrl='https://sandbox.paypal.com:443/webscr';
-if(env=='production') {
-  payPalUrl='https://www.paypal.com/cgi-bin/webscr';
-  embeddedPayUrl='https://www.paypal.com/webapps/adaptivepayment/flow/pay?paykey=';
-}
-
 var pcancel;
 var preturn;
 var ipn;
-
-
 
 var win;
 var thankYouPage = '';
@@ -66,11 +50,6 @@ var NO_ITEMS = '<H3>' + labelNoItem + '</H3>';
 
 
 $(document).ready(function(){
-
-
-  
-
-
   //completion code
   var completedFlag = $.getQueryString('checkoutCompleted'); 
   if(completedFlag ) {
@@ -79,55 +58,10 @@ $(document).ready(function(){
     }
   }
 
-  //TODO en_us from store
-  //data.error
-
-
-  //will delete cookie when page load
-  //$.cookie('sku',null, { expires: cookieDurationDays ,path: '/'});
-
-
-  //override default values with store values
-  // if(Store.currency) {
-  //   currency = Store.currency;
-  // }
-  // if(Store.currencyCode) {
-  //   currencyCode = Store.currencyCode;
-  // }				
-  if(Store.decimal) {
-    decimal = Store.decimal;
-  }
-  if(Store.checkoutAdditionalCostMessage) {
-    checkoutAdditionalCostMessage = Store.checkoutAdditionalCostMessage;
-  }
-  if(Store.checkoutAdditionalCost) {
-    checkoutAdditionalCost = Store.checkoutAdditionalCost;
-  }
-  if(Store.payPalUser) {
-    payPalUser=Store.payPalUser;
-  }
-  if(Store.baseUrl) {
-    //thankYouPage = Store.baseUrl + thankYouUrl;
-  }
-  if(Store.useShoppingCartImage) {
-    useShoppingCartImage = Store.useShoppingCartImage;
-  }
-
-
-
-  //cart variables
-  
-
+  useShoppingCartImage = true;
 
   addBindings();
   fillCart();
-
-  pcancel = encodeURI(Store.baseUrl + "/payment/" + mode + "-" + "cancel.html");
-  preturn = encodeURI(Store.baseUrl + "/payment/" + mode + "-" + "success.html");
-  ipn = encodeURI(Store.baseUrl + "/payment/standard-ipn.php");
-  
-  
-
 
 }); 
 
@@ -182,14 +116,7 @@ function fillCart() {
 
     //comment  //$('html').on('click.dropdown.data-api', clearMenus) in bootstrap-dropdown
     
-    
-    
-
-
-    
-    
     var TOTALS_HEADER= '';
-    
 
     var TOTALS_ADDITIONAL_PREPENDER= '';
     var TOTALS_ADDITIONAL_APPENDER ='';
