@@ -14,8 +14,6 @@
 
     <meta name="author" content="">
 
-
-
     <script src="js/bootstrap/jquery.js"></script>
 
     <script type="text/javascript" src="js/jquery/jquery-cookie.js"></script>
@@ -53,7 +51,6 @@
 	  </a>
 	  <span id="storeBranding"><a class="brand" href="/">ASICMiner Store</a></span>
 
-	  <!-- Shopping Cart do not edit -->
 	  <div class="btn-group pull-right">
 	    <i class="icon-shopping-cart icon-white"></i>
 	    <a id="open-cart" class="open noboxshadow dropdown-toggle" data-toggle="dropdown" href="#" style="box-shadow:none;color:FF8C00;">My Cart</a>
@@ -93,6 +90,34 @@
       <div class="row">&nbsp;<br/></div>
       <div class="row">&nbsp;<br/></div>
 
+      <div class="row">
+	<div class="span12">
+	  <section class="slider">
+	    <div class="flexslider" id="slider">
+	      <ul class="slides">
+		 <li id="0">
+		   <img src="img/blade.jpg" />
+		   <span class="slide-background"></span>
+		   <div class="slide-caption-first">
+		     <span class="side-title">BLADE!!!</span>
+		     <p class="slide-subtitle">This is blade</p>
+		   </div>
+		 </li>
+		 <li id="1">
+		   <img src="img/usb.jpg" />
+		   <span class="slide-background"></span>
+		   <div class="slide-caption">
+		     <span class="side-title">USB!!!</span>
+		     <p class="slide-subtitle">This is usb</p>
+		   </div>
+		 </li>
+	      </ul>
+	    </div>
+	  </section>
+	</div>
+      </div>
+	    
+
       {{{ yield }}}
 
       <hr>
@@ -131,6 +156,10 @@
     <script src="js/bootstrap/bootstrap-carousel.js"></script>
 
     <script src="js/bootstrap/bootstrap-typeahead.js"></script>
+
+    <script>
+      $('.flexslider').flexslider();
+    </script>
 
   </body>
 
