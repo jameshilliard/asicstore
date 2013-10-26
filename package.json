@@ -13,7 +13,8 @@
         "underscore" : "*",
         "request" : "*",
         "querystring" : "*",
-	"moment" : "*"
+	"moment" : "*",
+	"re-captcha" : "*"
     }
 }
 

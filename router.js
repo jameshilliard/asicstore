@@ -1,6 +1,12 @@
 var db = require('./database');
 var config = require('./config.json');
 
+var Recaptcha = require('re-captcha');
+var PUBLIC_KEY  = '6Ld_VukSAAAAAGmAxIKdshM9RXwuu00FcZoWH0ru';
+var PRIVATE_KEY = '6Ld_VukSAAAAAAfceEXQxD4w0UveVEmOtoKWj42D';
+var recaptcha = new Recaptcha(PUBLIC_KEY, PRIVATE_KEY);
+
+
 function ensureAuth(req, res, next) {
     if (req.isAuthenticated()) { return next(); }
     res.redirect('/account/login');
@@ -22,9 +28,27 @@ module.exports = function(app,passport) {
   });
 
   app.get('/order',function(req,res) {
-    res.render('order');
+    res.render('order',  {recaptcha_form: recaptcha.toHTML()});
   });
 
+  app.post('/order', function(req, res) {
+    var data = {
+      remoteip:  req.connection.remoteAddress,
+      challenge: req.body.recaptcha_challenge_field,
+      response:  req.body.recaptcha_response_field
+    };
+
+    recaptcha.verify(data, function(err) {
+      if (err) {
+	// Redisplay the form.
+	res.render('order', {
+          recaptcha_form: recaptcha.toHTML(err)
+	});
+      } else {
+	res.send('Recaptcha response valid.');
+      }
+    });
+  });
   // app.get('/account/register',account.register);
   // app.get('/account/home',ensureAuth,account.home);
   // app.post('/account/login', function(req,res,next) {

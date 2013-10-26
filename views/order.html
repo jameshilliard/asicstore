@@ -1,1 +1,37 @@
-<div>233</div>
+<script>
+  Catalog = [];
+  Catalog.push(
+  {
+  "id":"blade",
+  "name":"blade",
+  "image":"blade.jpg",
+  "price":1.2,
+  "formatedPrice":" ฿1.2"
+  }
+  );
+
+  Catalog.push(
+  {
+  "id":"usb",
+  "name":"usb",
+  "image":"usb.jpg",
+  "price":0.6,
+  "formatedPrice":" ฿0.6"
+  }
+  );
+
+
+</script>
+
+<script>
+  var RecaptchaOptions = {
+   theme: 'clean',
+   lang: 'en'
+  };
+</script>
+
+<form method="POST" action="/order">
+  {{{ recaptcha_form }}}
+  <input type="submit">
+</form>
+
