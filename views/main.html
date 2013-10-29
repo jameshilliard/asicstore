@@ -13,36 +13,101 @@
   {{/products}}
 </script>
 
+<div class="row">
+  <div class="span6">
+    <section class="slider">
+      <div class="flexslider" id="slider">
+	<ul class="slides">
+	  <li id="0">
+	    <img src="img/slides/1.jpg" />
+	    <span class="slide-background"></span>
+	    <div class="slide-caption-first">
+	      <span class="slide-title">BLADE!!!</span>
+	      <p class="slide-subtitle">This is blade1</p>
+	    </div>
+	  </li>
+	  <li id="1">
+	    <img src="img/slides/2.jpg" />
+	    <span class="slide-background"></span>
+	    <div class="slide-caption">
+	      <span class="slide-title">Blade!!!</span>
+	      <p class="slide-subtitle">This is blade2</p>
+	    </div>
+	  </li>
+          <li id="2">
+	    <img src="img/slides/3.jpg" />
+	    <span class="slide-background"></span>
+	    <div class="slide-caption">
+	      <span class="slide-title">Blade!!!</span>
+	      <p class="slide-subtitle">This is blade3</p>
+	    </div>
+	  </li>
+	  <li id="3">
+	    <img src="img/slides/4.jpg" />
+	    <span class="slide-background"></span>
+	    <div class="slide-caption">
+	      <span class="slide-title">Blade!!!</span>
+	      <p class="slide-subtitle">This is blade4</p>
+	    </div>
+	  </li>
+	  <li id="4">
+	    <img src="img/slides/5.jpg" />
+	    <span class="slide-background"></span>
+	    <div class="slide-caption">
+	      <span class="slide-title">Blade!!!</span>
+	      <p class="slide-subtitle">This is blade5</p>
+	    </div>
+	  </li>
+	</ul>
+      </div>
+    </section>
+  </div>
+  <div class="span6">
+    <strong>Spec:</strong><br>
+    <ul>
+      <li>Hashrate: baseline 10GHash/s, rated 10.752GHash/s, maximum 12.829GHash/s with overclocking and proper cooling</li>
+      <li>Power Consumption: 70-75W on 1.03-1.05V, 83W on 1.1V, 100W on 1.2V, 120W on 1.2V and overclocking</li>
+      <li>Hasher size: 233mm x 116mm with a 227mm x 100mm x 19mm heat sink attached to its back</li>
+      <li>Power module size: 192mm x 89mm</li>
+      <li>Ethernet controller size: 86mm x 40mm</li>
+      <li>Picture:           
+        <a href="http://imgur.com/a/PkOcu#0">Complete Album</a></li>
+  </div>
+</div>
+
+
+
 
 <div class="row" id="ebooks">
   {{#products}}
-  <div class="span6" >
-    <div class="box" style="height:575px;">
-      <h3>{{name}}</h3><br/>
-      <div class="mainArea">
-        <div class="row" style="margin-left:10px;">
-          <div class="span3" style="height:390px;overflow:hidden;">
-            <img class="templateImage" src="img/{{name_short}}.jpg" border="0">
+    <div class="span6" >
+      <div class="box" style="height:575px;">
+        <h3>{{name}}</h3><br/>
+        <div class="mainArea">
+          <div class="row" style="margin-left:10px;">
+            <div class="span3" style="height:390px;overflow:hidden;">
+              <img class="templateImage" src="img/{{name_short}}.jpg" border="0">
+            </div>
+            <div class="span2" style="height:390px;overflow:hidden;">
+              {{{ detail }}}
+              <script>console.log({{{detail}}})</script>
+              <br/><br/>
+            </div>
+            <br/>
+
+            <hr/>
+
+            Price: <strong>฿{{price}}</strong><br/><br/>
+
+            <p>
+              <input id="quantity-productId-{{name_short}}" type="number" value=1 min=1><br>
+	      <button productid="{{name_short}}" type="button" class="addToCart btn btn-success">Add to cart</button>
+            </p>
+
           </div>
-          <div class="span2" style="height:390px;overflow:hidden;">
-            {{&detail}}
-            <br/><br/>
-          </div>
-          <br/>
-
-          <hr/>
-
-          Price: <strong>฿{{price}}</strong><br/><br/>
-
-          <p>
-            <input id="quantity-productId-{{name_short}}" type="number" value=1 min=1><br>
-	    <button productid="{{name_short}}" type="button" class="addToCart btn btn-success">Add to cart</button>
-          </p>
-
         </div>
       </div>
     </div>
-  </div>
   {{/products}}
 </div>
 

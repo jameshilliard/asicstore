@@ -8,8 +8,8 @@ var recaptcha = new Recaptcha(PUBLIC_KEY, PRIVATE_KEY);
 
 
 function ensureAuth(req, res, next) {
-    if (req.isAuthenticated()) { return next(); }
-    res.redirect('/account/login');
+  if (req.isAuthenticated()) { return next(); }
+  res.redirect('/account/login');
 };
 
 var account = require('./routes/account');
@@ -19,54 +19,55 @@ var cart = require('./routes/cart');
 var checkout = require('./routes/checkout');
 
 module.exports = function(app,passport) {
-  app.get('/',function(req,res) {
-    req.session.last = "main";
-    db.getProducts(function(err,products) {
-      if(err) console.log(err);
+  db.getProducts(function(err,products){
+    if(err) {console.log("Can't get products");process.exit();};
+
+    app.get('/',function(req,res) {
       res.render('main',{'products':products});
     });
-  });
-
-  app.get('/order',function(req,res) {
-    res.render('order',  {recaptcha_form: recaptcha.toHTML()});
-  });
-
-  app.post('/order', function(req, res) {
-    var data = {
-      remoteip:  req.connection.remoteAddress,
-      challenge: req.body.recaptcha_challenge_field,
-      response:  req.body.recaptcha_response_field
-    };
-
-    recaptcha.verify(data, function(err) {
-      if (err) {
-	// Redisplay the form.
-	res.render('order', {
-          recaptcha_form: recaptcha.toHTML(err)
-	});
-      } else {
-	res.send('Recaptcha response valid.');
-      }
+    
+    app.get('/order',function(req,res) {
+      res.render('order', {'products':products, 'recaptcha_form': recaptcha.toHTML()});
     });
+
+    app.post('/order', function(req, res) {
+      var data = {
+	remoteip:  req.connection.remoteAddress,
+	challenge: req.body.recaptcha_challenge_field,
+	response:  req.body.recaptcha_response_field
+      };
+
+      recaptcha.verify(data, function(err) {
+	if (err) {
+	  // Redisplay the form.
+	  res.render('order', {
+            recaptcha_form: recaptcha.toHTML(err)
+	  });
+	} else {
+	  res.send('Recaptcha response valid.');
+	}
+      });
+    });
+    // app.get('/account/register',account.register);
+    // app.get('/account/home',ensureAuth,account.home);
+    // app.post('/account/login', function(req,res,next) {
+    //   passport.authenticate('local',function(err,user,info){
+    //     if(err){return next(err);}
+    
+    //     if(!user) {return res.send({"status":"fail"});};
+    
+    //     req.logIn(user,function(err){
+    // 	if(err){return next(err);}
+    // 	return res.redirect('/');
+    //     });
+    //   })(req,res,next);
+    // });
+
+    // app.post('/cart/add/:id',cart.addProduct);
+    // app.post('/cart/rem/:id',cart.remProduct);
+
+    app.get('/cart/list', cart.list);
   });
-  // app.get('/account/register',account.register);
-  // app.get('/account/home',ensureAuth,account.home);
-  // app.post('/account/login', function(req,res,next) {
-  //   passport.authenticate('local',function(err,user,info){
-  //     if(err){return next(err);}
-      
-  //     if(!user) {return res.send({"status":"fail"});};
-      
-  //     req.logIn(user,function(err){
-  // 	if(err){return next(err);}
-  // 	return res.redirect('/');
-  //     });
-  //   })(req,res,next);
-  // });
-
-  // app.post('/cart/add/:id',cart.addProduct);
-  // app.post('/cart/rem/:id',cart.remProduct);
-
-  app.get('/cart/list', cart.list);
-  
 };
+
+

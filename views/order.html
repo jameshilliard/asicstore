@@ -1,26 +1,16 @@
 <script>
   Catalog = [];
-  Catalog.push(
-  {
-  "id":"blade",
-  "name":"blade",
-  "image":"blade.jpg",
-  "price":1.2,
-  "formatedPrice":" ฿1.2"
-  }
-  );
-
-  Catalog.push(
-  {
-  "id":"usb",
-  "name":"usb",
-  "image":"usb.jpg",
-  "price":0.6,
-  "formatedPrice":" ฿0.6"
-  }
-  );
-
-
+  {{#products}}
+    Catalog.push(
+    {
+    "id":"{{name_short}}",
+    "name":"{{name}}",
+    "image":"{{name_short}}.jpg",
+    "price":{{price}},
+    "formatedPrice":" ฿{{price}}"
+    }
+    );
+  {{/products}}
 </script>
 
 <script>
