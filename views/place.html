@@ -1,0 +1,63 @@
+<script>
+  Catalog = [];
+  {{#products}}
+    Catalog.push(
+    {
+    "id":"{{name_short}}",
+    "name":"{{name}}",
+    "image":"{{name_short}}.jpg",
+    "price":{{price}},
+    "formatedPrice":" ฿{{price}}"
+    }
+    );
+  {{/products}}
+</script>
+
+<script>
+  var RecaptchaOptions = {
+   theme: 'white',
+   lang: 'en'
+  };
+</script>
+
+<form class="form-horizontal">
+<fieldset>
+
+<!-- Form Name -->
+<legend>Order Detail</legend>
+
+<!-- Text input-->
+<div class="control-group">
+  <label class="control-label" for="firstname">First Name</label>
+  <div class="controls">
+    <input id="firstname" name="firstname" type="text" placeholder="" class="input-xlarge" required="">
+    
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="control-group">
+  <label class="control-label" for="lastname">Last Name</label>
+  <div class="controls">
+    <input id="lastname" name="lastname" type="text" placeholder="" class="input-xlarge" required="">
+    
+  </div>
+</div>
+
+<div class="control-group">
+  <div class="controls">
+    {{{ recaptcha_form }}}
+  </div>
+</div>
+
+<!-- Button -->
+<div class="control-group">
+  <label class="control-label" for="submit"></label>
+  <div class="controls">
+    <button id="submit" name="submit" class="btn btn-primary">Place Order</button>
+  </div>
+</div>
+
+</fieldset>
+
+</form>

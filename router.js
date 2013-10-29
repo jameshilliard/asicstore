@@ -26,6 +26,14 @@ module.exports = function(app,passport) {
       res.render('main',{'products':products});
     });
     
+    app.get('/store',function(req,res) {
+      res.render('main',{'products':products});
+    });
+
+    app.get('/placeorder',function(req,res) {
+      res.render('place', {'products':products, 'recaptcha_form': recaptcha.toHTML()});
+    });
+    
     app.get('/order',function(req,res) {
       res.render('order', {'products':products, 'recaptcha_form': recaptcha.toHTML()});
     });

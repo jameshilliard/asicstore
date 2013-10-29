@@ -167,7 +167,7 @@ function fillCart() {
       var WAIT_BLOCK = '';
 
       var BLOCKCHAIN_LOGO = '<img src="img/bitcoin-accepted.png" border="0" width="110" alt="Checkout with paypal">';
-      var CHECKOUT_BUTTON = '<input type="submit" value="Place Your Order" class="btn btn-primary btn-xlarge" onclick="invokeCheckout()">';
+      var CHECKOUT_BUTTON = '<input type="submit" value="Place Your Order" class="btn btn-primary btn-xlarge" onclick="window.location=\'/placeorder\'">';
 
       //globalproducts = globalproducts + FOOTER_HEADER;
       
