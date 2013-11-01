@@ -20,6 +20,50 @@
   };
 </script>
 
+<script src="js/jquery-ui-autocomplete.js"></script>
+<script src="js/jquery.select-to-autocomplete.min.js"></script>
+<script type="text/javascript" charset="utf-8">
+   (function($){
+      $(function(){
+          $('select').selectToAutocomplete();
+          $('form').submit(function(){
+          console.log( $(this));
+          return false;
+      });
+   });
+})(jQuery);
+</script>
+
+<style type="text/css" media="screen">
+	  body {
+	    font-family: Arial, Verdana, sans-serif;
+	    font-size: 13px;
+	  }
+    .ui-autocomplete {
+      padding: 0;
+      list-style: none;
+      background-color: #fff;
+      width: 218px;
+      border: 1px solid #B0BECA;
+      max-height: 350px;
+      overflow-y: scroll;
+    }
+    .ui-autocomplete .ui-menu-item a {
+      border-top: 1px solid #B0BECA;
+      display: block;
+      padding: 4px 6px;
+      color: #353D44;
+      cursor: pointer;
+    }
+    .ui-autocomplete .ui-menu-item:first-child a {
+      border-top: none;
+    }
+    .ui-autocomplete .ui-menu-item a.ui-state-hover {
+      background-color: #D5E5F4;
+      color: #161A1C;
+    }
+</style>
+
 <form class="form-horizontal">
 <fieldset>
 
@@ -45,6 +89,20 @@
 </div>
 
 <div class="control-group">
+  <label class="control-label" for="country">Country</label>
+  <div class="controls">
+    <select name="Country" id="country-selector" autocorrect="on" autocomplete="on">
+      <option value="China" data-relevancy-booster="3.5" data-alternative-spellings="CN Zhongguo Zhonghua Peoples Republic 中国/中华">China</option>
+      <option value="Honduras" data-alternative-spellings="HN">Honduras</option>
+      <option value="Hong Kong" data-alternative-spellings="HK 香港">Hong Kong</option>
+      <option value="Hungary" data-alternative-spellings="HU Magyarország">Hungary</option>
+      <option value="India" data-alternative-spellings="IN भारत गणराज्य Hindustan" data-relevancy-booster="3">India</option>
+    </select>
+  </div>
+</div>
+
+<div class="control-group">
+  <label class="control-label" for="captcha">Verification Code</label>
   <div class="controls">
     {{{ recaptcha_form }}}
   </div>
