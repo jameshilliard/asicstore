@@ -33,6 +33,26 @@ module.exports = function(app,passport) {
     app.get('/placeorder',function(req,res) {
       res.render('place', {'products':products, 'recaptcha_form': recaptcha.toHTML()});
     });
+
+
+    app.post('/placeorder',function(req,res) {
+      var data = {
+	remoteip:  req.connection.remoteAddress,
+	challenge: req.body.recaptcha_challenge_field,
+	response:  req.body.recaptcha_response_field
+      };
+
+      console.log(req.body);
+
+      recaptcha.verify(data, function(err) {
+	if (err) {
+	  // Redisplay the form.
+	  res.send('Recaptcha failed');
+	} else {
+	  res.send('Recaptcha response valid.');
+	}
+      });      
+    });
     
     app.get('/order',function(req,res) {
       res.render('order', {'products':products, 'recaptcha_form': recaptcha.toHTML()});

@@ -91,14 +91,26 @@
 <script src="js/jquery-ui-autocomplete.js"></script>
 <script src="js/jquery.select-to-autocomplete.min.js"></script>
 <script type="text/javascript" charset="utf-8">
-   (function($){
-   $(function(){
-   $('#submit').click(function(){ $('#order-confirm').modal();});
-   $('#select').selectToAutocomplete();
-   shippingInfo = $('#form').serializeObject();
-   $('#confirm-msg').text(JSON.stringify(shippingInfo));
-   $('#cancel').click(function(){$('#order-confirm').modal('hide');});
+(function($){
+  $(function(){
+  $('#submit').click(function(){
+      var products = $.cookie( 'sku' );
+      if(products!=null && products!='') {
+        $('#confirm-msg').html(renderCart());
+        $('#order-confirm').modal();
+      } else {
+        alert("Your cart is empty!");
+      };
+      $('#confirm').click(function(){
+        var order = $('#form').serializeObject();
+        order.products = products;
+        console.log(order);
+        $.post('/placeorder',order,function(res){console.log(res)});
+      });
    });
+   $('#select').selectToAutocomplete();
+   $('#cancel').click(function(){$('#order-confirm').modal('hide');});
+ });
 })(jQuery);
 </script>
 
@@ -243,14 +255,24 @@
     <h1>Confirm Your Order</h1>
   </div>
   <div class="modal-body">
-    <div class="container">
+    <div class="box-content">
       <div id="confirm-msg">
       </div>
-      <div class="controls">
-        <button id="confirm" name="confirm" class="btn btn-danger">Confirm</button>
-      </div>
-      <div class="controls">
-        <button id="cancel" name="cancel" class="btn btn-info">Cancel</button>
+      <div class="pull-right">
+        <table>
+          <tr>
+            <td>
+              <div class="controls">
+                <button id="confirm" name="confirm" class="btn btn-large btn-danger">Confirm</button>
+              </div>
+            </td>
+            <td>
+              <div class="controls">
+                <button id="cancel" name="cancel" class="btn btn-large btn-info">Cancel</button>
+              </div>
+            </td>
+          </tr>
+        </table>
       </div>
     </div>
   </div>
