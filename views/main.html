@@ -1,18 +1,3 @@
-<script>
-  Catalog = [];
-  {{#products}}
-    Catalog.push(
-    {
-    "id":"{{name_short}}",
-    "name":"{{name}}",
-    "image":"{{name_short}}.jpg",
-    "price":{{price}},
-    "formatedPrice":" ฿{{price}}"
-    }
-    );
-  {{/products}}
-</script>
-
 <div class="row">
   <div class="span6">
     <section class="slider">
@@ -78,7 +63,7 @@
 
 
 
-<div class="row" id="ebooks">
+<div class="row" id="items">
   {{#products}}
     <div class="span6" >
       <div class="box" style="height:575px;">

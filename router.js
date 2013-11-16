@@ -23,15 +23,19 @@ module.exports = function(app,passport) {
     if(err) {console.log("Can't get products");process.exit();};
 
     app.get('/',function(req,res) {
-      res.render('main',{'products':products});
+      res.render('example',{'layout':'demo'});
     });
-    
+
+    app.get('/demo',function(req,res) {
+      res.render ('example',{'layout':'demo'});
+    });
+
     app.get('/store',function(req,res) {
       res.render('main',{'products':products});
     });
 
     app.get('/placeorder',function(req,res) {
-      res.render('place', {'products':products, 'recaptcha_form': recaptcha.toHTML()});
+      res.render('place', {'recaptcha_form': recaptcha.toHTML()});
     });
 
 
@@ -42,20 +46,18 @@ module.exports = function(app,passport) {
 	response:  req.body.recaptcha_response_field
       };
 
-      console.log(req.body);
-
       recaptcha.verify(data, function(err) {
 	if (err) {
-	  // Redisplay the form.
 	  res.send('Recaptcha failed');
 	} else {
+	  
 	  res.send('Recaptcha response valid.');
 	}
       });      
     });
     
     app.get('/order',function(req,res) {
-      res.render('order', {'products':products, 'recaptcha_form': recaptcha.toHTML()});
+      res.render('order', {'recaptcha_form': recaptcha.toHTML()});
     });
 
     app.post('/order', function(req, res) {

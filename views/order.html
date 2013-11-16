@@ -1,19 +1,4 @@
 <script>
-  Catalog = [];
-  {{#products}}
-    Catalog.push(
-    {
-    "id":"{{name_short}}",
-    "name":"{{name}}",
-    "image":"{{name_short}}.jpg",
-    "price":{{price}},
-    "formatedPrice":" ฿{{price}}"
-    }
-    );
-  {{/products}}
-</script>
-
-<script>
   var RecaptchaOptions = {
    theme: 'clean',
    lang: 'en'

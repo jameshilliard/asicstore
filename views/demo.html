@@ -32,12 +32,33 @@
     <link href="css/contact.css" type="text/css" rel="stylesheet">
     <link href="css/template.css" type="text/css" rel="stylesheet">
     <link href="css/flexslider.css" type="text/css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="css/jquery.fullPage.css" />
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.1/jquery-ui.min.js"></script>	
+	
+    <script type="text/javascript" src="js/jquery.fullPage.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function() {
+			$.fn.fullpage({
+				slidesColor: ['black','black','black','black'],
+		                navigation: true
+
+			});
+		});
+    </script>
+    <style>
+      .section{
+      text-align:center;
+      border:none;
+      }
+    </style>
+
 
   </head>
 
 
 
-  <body>
+  <body style="background:black">
 
 
 
@@ -79,38 +100,8 @@
       </div>
     </div>
 
-    <div class="container">
-      <div class="row">&nbsp;<br/></div>
-      <div class="row">&nbsp;<br/></div>
-      <div class="row">&nbsp;<br/></div>
-      <div class="row">&nbsp;<br/></div>
+{{{ yield }}}
 
-      {{{ yield }}}
-
-      <hr>
-
-      <footer>
-
-	<p><span id="footerDetails"><strong>ASICMiner Store</strong></span></p>
-
-      </footer>
-
-    </div> <!-- /container -->
-
-
-    <div id="addToCartMessage" class="statusMessage"><p>Adding product to cart...</p></div>
-
-    <script src="js/bootstrap/bootstrap.min.js"></script>
-
-
-    <script>
-      $('.flexslider').flexslider({
-      animation: "slide",
-      itemWidth: 600
-      });
-      
-    </script>
-    
 <script>
   Catalog = [];
   {{#products}}
