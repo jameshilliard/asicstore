@@ -1,2 +1,1 @@
-{ "__v" : 0, "_id" : { "$oid" : "5254faa36699589e2f000001" }, "detail" : "<ul><li>10.5GH/s</li><li>70Watt</li></ul>", "name" : "blade", "name_short" : "blade", "price" : 1.2 }
-{ "__v" : 0, "_id" : { "$oid" : "5254fb256699589e2f000002" }, "detail" : "<ul><li>300MH/s</li><li>0.5Watt</li></ul>", "name" : "usb", "name_short" : "usb", "price" : 0.6 }
+{ "_id" : { "$oid" : "528ba0460e31891926079fe1" }, "name" : "Block Erupter Cube", "name_short" : "box", "price" : 1.3, "detail" : "TODO" }
