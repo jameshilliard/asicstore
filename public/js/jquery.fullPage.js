@@ -502,9 +502,13 @@
 			}
 						
 			//calculating the index of the section we are leaving
-			if(yMovement === 'up'){
-				leavingSection +=2; 
-			}			
+			// if(yMovement === 'up'){
+			// 	leavingSection -= 1; 
+			// }			
+			// if(yMovement === 'down'){
+			// 	leavingSection += 1; 
+			// }			
+
 						
 			if(options.css3 && options.autoScrolling){
 
