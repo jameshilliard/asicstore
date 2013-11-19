@@ -24,13 +24,16 @@
     <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.1/jquery-ui.min.js"></script>	
 	
     <script type="text/javascript" src="js/jquery.fullPage.js"></script>
+    <script src="js/videocontrol.js"></script>
     <script type="text/javascript">
     $(document).ready(function() {
          		$.fn.fullpage({
          			slidesColor: ['black','black','black','black'],
          	                navigation: true,
-                                loopBottom:true
+                                loopBottom:true,
+                                onLeave:handleScroll
          		        });
+                       $('#video1').get(0).play();
          	});
     </script>
     <style>
