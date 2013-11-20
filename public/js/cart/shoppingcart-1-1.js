@@ -28,8 +28,8 @@ var labelPreparingCheckout = 'Preparing ...';
 var labelTotal = 'Total : ';
 
 //default values
-var currency = '฿';
-var currencyCode = 'BTC';			
+var currency = '$';
+var currencyCode = 'USD';			
 
 //do not edit
 var decimal =".";
@@ -765,13 +765,13 @@ function printPriceQty(mode) {
   }
 
   if(mode==1) {//summary
-    $("#cartprice").html(currency + round_decimals(total,8));
+    $("#cartprice").html(currency + round_decimals(total,2));
     $("#cartqty").html('(' + qty + ' ' + lItem + ')');
   } else if(mode==2) {//checkout
-    $("#checkout-total").html(currency + round_decimals(total,8));
+    $("#checkout-total").html(currency + round_decimals(total,2));
   } else if(mode==3) {
     total = total + parseFloat(checkoutAdditionalCost);
-    $("#checkout-total-plus").html(currency + round_decimals(total,8));
+    $("#checkout-total-plus").html(currency + round_decimals(total,2));
   }
 }
 
@@ -807,7 +807,7 @@ function renderPrice() {
     lItem = labelItems;
   }
 
-  return currency + round_decimals(total,8);
+  return currency + round_decimals(total,2);
 
 }
 

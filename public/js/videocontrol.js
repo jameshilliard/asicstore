@@ -3,7 +3,6 @@ function rewind(video) {
   video.currentTime=0;
 }
 
-
 function handleScroll(index,direction) {
   console.log(index);
   console.log(direction);
@@ -11,14 +10,14 @@ function handleScroll(index,direction) {
   var video2 = $('#video2').get(0);
   var video3 = $('#video3').get(0);
   var video4 = $('#video4').get(0);
-
+  
   switch(index)  {
   case 0:
     video1.play();
     rewind(video2);
     rewind(video3);
     rewind(video4);
-
+    
     break;
   case 2:
     video2.play();
@@ -40,6 +39,12 @@ function handleScroll(index,direction) {
     rewind(video2);
     rewind(video3);
 
+    break;
+  default:
+    rewind(video1);
+    rewind(video2);
+    rewind(video3);
+    rewind(video4);
     break;
   }
 }

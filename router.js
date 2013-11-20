@@ -6,6 +6,7 @@ var PUBLIC_KEY  = '6Ld_VukSAAAAAGmAxIKdshM9RXwuu00FcZoWH0ru';
 var PRIVATE_KEY = '6Ld_VukSAAAAAAfceEXQxD4w0UveVEmOtoKWj42D';
 var recaptcha = new Recaptcha(PUBLIC_KEY, PRIVATE_KEY);
 
+var mailer = require('./mailer');
 
 function ensureAuth(req, res, next) {
   if (req.isAuthenticated()) { return next(); }
@@ -17,6 +18,7 @@ var store = require('./routes/store');
 var product = require('./routes/product');
 var cart = require('./routes/cart');
 var checkout = require('./routes/checkout');
+var moment = require('moment');
 
 module.exports = function(app,passport) {
   db.getProducts(function(err,products){
@@ -35,25 +37,28 @@ module.exports = function(app,passport) {
     });
 
     app.get('/placeorder',function(req,res) {
-      res.render('place', {'recaptcha_form': recaptcha.toHTML()});
+      res.render('place', {'products':products,'recaptcha_form': recaptcha.toHTML()});
     });
 
-
-    app.post('/placeorder',function(req,res) {
+    app.post('/verify',function(req,res) {
       var data = {
 	remoteip:  req.connection.remoteAddress,
 	challenge: req.body.recaptcha_challenge_field,
 	response:  req.body.recaptcha_response_field
       };
-
       recaptcha.verify(data, function(err) {
 	if (err) {
-	  res.send('Recaptcha failed');
+	  res.send('false');
 	} else {
-	  
-	  res.send('Recaptcha response valid.');
+	  res.send('true');
 	}
-      });      
+      });
+    });
+
+    app.post('/placeorder',function(req,res) {
+      var order = req.body;
+      console.log(order);
+      res.send('complete');
     });
     
     app.get('/order',function(req,res) {
