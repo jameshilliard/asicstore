@@ -20,6 +20,7 @@
     <link href="css/bootstrap-responsive.min.css" rel="stylesheet">
     <link href="css/template.css" type="text/css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="css/jquery.fullPage.css" />
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
     <link href="css/cart.css" type="text/css" rel="stylesheet"/>
 
 
@@ -28,20 +29,38 @@
     <script type="text/javascript" src="js/jquery.fullPage.js"></script>
     <script src="js/videocontrol.js"></script>
     <script type="text/javascript">
-    $(document).ready(function() {
+      $(document).ready(function() {
          		$.fn.fullpage({
-         			slidesColor: ['black','black','black','black'],
+         		slidesColor: ['black','black','black','black'],
          	                navigation: true,
                                 loopBottom:true,
                                 onLeave:handleScroll
-         		        });
-                       $('#video1').get(0).play();
+                     });
+      var video1 = $('#video1').get(0);
+      var video2 = $('#video2').get(0);
+      var video3 = $('#video3').get(0);
+      var video4 = $('#video4').get(0);
+      var video5 = $('#video5').get(0);
+      video1.play();
+      
+      video2.addEventListener('ended',function(clip){console.log("video2 end");video2.removeEventListener('ended');$.fn.fullpage.moveSlideDown();},false);
+      video3.addEventListener('ended',function(clip){console.log("video3 end");video3.removeEventListener('ended');$.fn.fullpage.moveSlideDown();},false);
+      video4.addEventListener('ended',function(clip){console.log("video4 end");video4.removeEventListener('ended');$.fn.fullpage.moveSlideDown();},false);
+      video5.addEventListener('ended',function(clip){console.log("video5 end");video5.removeEventListener('ended');$.fn.fullpage.moveSlideDown();},false);
+
+
          	});
     </script>
     <style>
       .section{
       text-align:center;
       border:none;
+      }
+      .keyframe{
+      height:50%;
+      }
+      .keynote{
+      color:white;
       }
     </style>
   </head>
@@ -70,9 +89,7 @@
     {{{ yield }}}
 
     <script src="js/bootstrap/bootstrap.min.js"></script>
-    <script>
 
-    </script>
   </body>
 
 </html>
