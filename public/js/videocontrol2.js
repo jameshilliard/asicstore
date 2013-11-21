@@ -80,11 +80,11 @@ function addEventListener() {
     var video3 = $('#video3').get(0);
     var video4 = $('#video4').get(0);
     var video5 = $('#video5').get(0);
-    video1.addEventListener('ended',function(clip){console.log("video1 end");video1.removeEventListener('ended');$('#note1').fadeIn();},false);
-    video2.addEventListener('ended',function(clip){console.log("video2 end");video2.removeEventListener('ended');$('#note2').fadeIn();},false);
-    video3.addEventListener('ended',function(clip){console.log("video3 end");video3.removeEventListener('ended');$('#note3').fadeIn();},false);
-    video4.addEventListener('ended',function(clip){console.log("video4 end");video4.removeEventListener('ended');$('#note4').fadeIn();},false);
-    video5.addEventListener('ended',function(clip){console.log("video5 end");video5.removeEventListener('ended');$('#note5').fadeIn();},false);
+    video1.addEventListener('ended',function(clip){console.log("video1 end");$('#note1').fadeIn();},false);
+    video2.addEventListener('ended',function(clip){console.log("video2 end");$('#note2').fadeIn();},false);
+    video3.addEventListener('ended',function(clip){console.log("video3 end");$('#note3').fadeIn();},false);
+    video4.addEventListener('ended',function(clip){console.log("video4 end");$('#note4').fadeIn();},false);
+    video5.addEventListener('ended',function(clip){console.log("video5 end");$('#note5').fadeIn();},false);
   });
 }
 
