@@ -28,9 +28,15 @@ module.exports = function(app,passport) {
       res.render('example2',{'layout':'demo'});
     });
 
+    app.get('/ie',function(req,res) {
+      res.render('example',{'layout':'demo_ie'});
+    });
+
     app.get('/demo',function(req,res) {
       res.render ('example',{'layout':'demo'});
     });
+
+
 
     app.get('/store',function(req,res) {
       res.render('main',{'products':products});
