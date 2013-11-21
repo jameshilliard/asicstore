@@ -6,7 +6,7 @@
 
     <meta charset="utf-8">
 
-    <title>ASICMiner Store</title>
+    <title>Block Erupter Store</title>
 
     <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no">
 
@@ -27,7 +27,7 @@
     <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.1/jquery-ui.min.js"></script>	
 	
     <script type="text/javascript" src="js/jquery.fullPage.js"></script>
-    <script src="js/videocontrol.js"></script>
+    <script src="js/videocontrol2.js"></script>
     <script type="text/javascript">
       $(document).ready(function() {
          		$.fn.fullpage({
@@ -43,11 +43,6 @@
       var video5 = $('#video5').get(0);
       video1.play();
       
-      video2.addEventListener('ended',function(clip){console.log("video2 end");video2.removeEventListener('ended');$.fn.fullpage.moveSlideDown();},false);
-      video3.addEventListener('ended',function(clip){console.log("video3 end");video3.removeEventListener('ended');$.fn.fullpage.moveSlideDown();},false);
-      video4.addEventListener('ended',function(clip){console.log("video4 end");video4.removeEventListener('ended');$.fn.fullpage.moveSlideDown();},false);
-      video5.addEventListener('ended',function(clip){console.log("video5 end");video5.removeEventListener('ended');$.fn.fullpage.moveSlideDown();},false);
-
 
          	});
     </script>
@@ -55,6 +50,9 @@
       .section{
       text-align:center;
       border:none;
+      }
+      video{
+      margin-top:100px;
       }
       .keyframe{
       height:50%;
@@ -76,7 +74,7 @@
 	    <span class="icon-bar"></span>
 	    <span class="icon-bar"></span>
 	  </a>
-	  <span id="storeBranding"><a class="brand" href="/">ASICMiner Store</a></span>
+	  <span id="storeBranding"><a class="brand" href="/">Block Erupter Store</a></span>
 	  <div class="nav-collapse collapse">
 	    <ul class="nav" id="mainMenuLinks">
               <li><a href="/store">Store</a></li>

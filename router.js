@@ -25,7 +25,7 @@ module.exports = function(app,passport) {
     if(err) {console.log("Can't get products");process.exit();};
 
     app.get('/',function(req,res) {
-      res.render('example',{'layout':'demo'});
+      res.render('example2',{'layout':'demo'});
     });
 
     app.get('/demo',function(req,res) {
