@@ -16,9 +16,9 @@ var ProductSchema = new Schema({
 
   price: { type: Number, required: true },
 
-  detail: {
-    description: { type: String, required: false }
-  }
+  detail: { type: String, required: true },
+
+  available: {type: Boolean, required:true}
 });
 
 // Export product model

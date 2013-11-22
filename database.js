@@ -51,7 +51,7 @@ module.exports = {
 	      subtotal:subtotal
 	    };
 	  });
-
+    var total = productDetails.reduce(function(a,b){return a+b.subtotal;},0);
     
     var saved = new Order({
       email:order.email,
@@ -65,8 +65,19 @@ module.exports = {
 	state:order.state,
 	country:order.country,
 	zipcode:order.zipcode
-      }
+      },
+      items:productDetails,
+      total:total
     });
+    
+    console.log(saved);
+    
+    saved.save();
+    // saved.save(function(err){
+    //   if(err) {throw err;}
+    //   callback(null,saved);
+    // });
+
   },
   
   closeDB: function() {

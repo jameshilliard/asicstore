@@ -64,6 +64,7 @@ module.exports = function(app,passport) {
     app.post('/placeorder',function(req,res) {
       var order = req.body;
       console.log(order);
+      db.saveOrder(products,order);
       res.send('complete');
     });
     
@@ -71,24 +72,25 @@ module.exports = function(app,passport) {
       res.render('order', {'recaptcha_form': recaptcha.toHTML()});
     });
 
-    app.post('/order', function(req, res) {
-      var data = {
-	remoteip:  req.connection.remoteAddress,
-	challenge: req.body.recaptcha_challenge_field,
-	response:  req.body.recaptcha_response_field
-      };
+    // app.post('/order', function(req, res) {
+    //   var data = {
+    // 	remoteip:  req.connection.remoteAddress,
+    // 	challenge: req.body.recaptcha_challenge_field,
+    // 	response:  req.body.recaptcha_response_field
+    //   };
 
-      recaptcha.verify(data, function(err) {
-	if (err) {
-	  // Redisplay the form.
-	  res.render('order', {
-            recaptcha_form: recaptcha.toHTML(err)
-	  });
-	} else {
-	  res.send('Recaptcha response valid.');
-	}
-      });
-    });
+    //   recaptcha.verify(data, function(err) {
+    // 	if (err) {
+    // 	  // Redisplay the form.
+    // 	  res.render('order', {
+    //         recaptcha_form: recaptcha.toHTML(err)
+    // 	  });
+    // 	} else {
+    // 	  res.send('Recaptcha response valid.');
+    // 	}
+    //   });
+    // });
+
     // app.get('/account/register',account.register);
     // app.get('/account/home',ensureAuth,account.home);
     // app.post('/account/login', function(req,res,next) {
@@ -107,7 +109,7 @@ module.exports = function(app,passport) {
     // app.post('/cart/add/:id',cart.addProduct);
     // app.post('/cart/rem/:id',cart.remProduct);
 
-    app.get('/cart/list', cart.list);
+    // app.get('/cart/list', cart.list);
   });
 };
 

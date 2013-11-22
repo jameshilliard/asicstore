@@ -1,1 +1,2 @@
-{ "_id" : { "$oid" : "528ba0460e31891926079fe1" }, "name" : "Block Erupter Cube", "name_short" : "box", "price" : 500, "detail" : "TODO" }
+{ "_id" : { "$oid" : "528ba0460e31891926079fe1" }, "name" : "Block Erupter Cube", "name_short" : "box", "price" : 500, "detail" : "TODO", "available" : true }
+{ "_id" : { "$oid" : "528f2ccfb24937344be2921b" }, "name" : "Power Supply for Block Erupter Cube", "name_short" : "PSU", "price" : 20, "detail" : "TODO", "available" : false }

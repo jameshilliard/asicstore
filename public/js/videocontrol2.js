@@ -80,7 +80,7 @@ function addEventListener() {
     var video3 = $('#video3').get(0);
     var video4 = $('#video4').get(0);
     var video5 = $('#video5').get(0);
-    video1.addEventListener('ended',function(clip){console.log("video1 end");$('#note1').fadeIn();},false);
+    video1.addEventListener('ended',function(clip){console.log("video1 end");$('#note1').fadeIn(500,"swing");},false);
     video2.addEventListener('ended',function(clip){console.log("video2 end");$('#note2').fadeIn();},false);
     video3.addEventListener('ended',function(clip){console.log("video3 end");$('#note3').fadeIn();},false);
     video4.addEventListener('ended',function(clip){console.log("video4 end");$('#note4').fadeIn();},false);

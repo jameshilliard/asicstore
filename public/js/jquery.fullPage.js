@@ -58,7 +58,7 @@
 	  //moving the container up
 	  if(options.css3){
 	    var translate3d = 'translate3d(0px, -' + element.position().top + 'px, 0px)';
-	    transformContainer(translate3d, false)
+	    transformContainer(translate3d, false);
 	  }else{
 	    //deleting the possible negative top
 	    $('#superContainer').css('top', '-'  + element.position().top + 'px');
@@ -74,7 +74,7 @@
 	if(options.css3){
 	  //moving the container up
 	  var translate3d = 'translate3d(0px, 0px, 0px)';
-	  transformContainer(translate3d, false)
+	  transformContainer(translate3d, false);
 	}else{
 	  //deleting the possible negative top
 	  $('#superContainer').css('top', '0px');
@@ -510,37 +510,20 @@
       // }			
 
       
-      if(options.css3 && options.autoScrolling){
+      $.isFunction( options.onLeave ) && options.onLeave.call( this, leavingSection, yMovement);
+      console.log($(scrolledElement));
+      $(scrolledElement).animate(
+        scrollOptions 
+        , options.scrollingSpeed, options.easing, function() {
+          //callback
+          $.isFunction( options.afterLoad ) && options.afterLoad.call( this, anchorLink, (sectionIndex + 1));
+      
+          setTimeout(function(){
+            isMoving = false;
+            $.isFunction( callback ) && callback.call( this);
+          }, scrollDelay);
+        });
 
-	
-	$.isFunction( options.onLeave ) && options.onLeave.call( this, leavingSection, yMovement);
-
-	var translate3d = 'translate3d(0px, -' + dtop + 'px, 0px)';
-	transformContainer(translate3d, true);
-	
-	setTimeout(function(){
-	  $.isFunction( options.afterLoad ) && options.afterLoad.call( this, anchorLink, (sectionIndex + 1));
-
-	  setTimeout(function(){
-	    isMoving = false;
-	    $.isFunction( callback ) && callback.call( this);
-	  }, scrollDelay);
-	}, options.scrollingSpeed);
-      }else{
-	$.isFunction( options.onLeave ) && options.onLeave.call( this, leavingSection, yMovement);
-	
-	$(scrolledElement).animate(
-	  scrollOptions 
-	  , options.scrollingSpeed, options.easing, function() {
-	    //callback
-	    $.isFunction( options.afterLoad ) && options.afterLoad.call( this, anchorLink, (sectionIndex + 1));
-	    
-	    setTimeout(function(){
-	      isMoving = false;
-	      $.isFunction( callback ) && callback.call( this);
-	    }, scrollDelay);
-	  });
-      }
       
       //flag to avoid callingn `scrollPage()` twice in case of using anchor links
       lastScrolledDestiny = anchorLink;
@@ -751,20 +734,21 @@
     var resizeId;
     
     //when resizing the site, we adjust the heights of the sections
-    $(function() {
-      var $window = $(window);
-      var width = $window.width();
-      var height = $window.height();
-      
-      setInterval(function () {
-        if ((width != $window.width()) || (height != $window.height())) {
-          width = $window.width();
-          height = $window.height();
-	  doneResizing();
-        }
-      }, 300);
-    });
-
+    if(!isTablet) {
+      $(function() {
+	var $window = $(window);
+	var width = $window.width();
+	var height = $window.height();
+	
+	setInterval(function () {
+          if ((width != $window.width()) || (height != $window.height())) {
+            width = $window.width();
+            height = $window.height();
+	    doneResizing();
+          }
+	}, 300);
+      });
+    }
     $(window).bind('orientationchange', function() {
       doneResizing();
     });
