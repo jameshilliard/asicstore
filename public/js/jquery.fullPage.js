@@ -509,17 +509,18 @@
       console.log('sectionIndex:'+leavingSection);
 
       $('#section'+leavingSection).fadeOut();
-      	  $(scrolledElement).animate(
-            scrollOptions 
-            , 0, options.easing, function() {
-              //callback
-              $.isFunction( options.afterLoad ) && options.afterLoad.call( this, anchorLink, (sectionIndex + 1));
-	      $("#section"+sectionIndex).fadeIn('slow');
-              setTimeout(function(){
-	  	isMoving = false;
-	  	$.isFunction( callback ) && callback.call( this);
-              }, scrollDelay);
-            });
+      $(scrolledElement).animate(
+        scrollOptions 
+        , 0, options.easing, function() {
+          //callback
+          $.isFunction( options.afterLoad ) && options.afterLoad.call( this, anchorLink, (sectionIndex + 1));
+	  $("#section"+sectionIndex).fadeIn('slow');
+          setTimeout(function(){
+	    isMoving = false;
+	    $.isFunction( callback ) && callback.call( this);
+          }, scrollDelay);
+        });
+
 
       // $("#section"+sectionIndex).fadeOut('slow',
       // 	function(){

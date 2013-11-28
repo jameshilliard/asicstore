@@ -1,6 +1,6 @@
 function rewind(video) {
   video.pause();
-  video.currentTime=video.duration;
+  video.currentTime=0;
 }
 
 function ff(video){
