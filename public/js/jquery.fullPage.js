@@ -501,30 +501,46 @@
 	scrolledElement = 'html, body';
       }
       
-      //calculating the index of the section we are leaving
-      // if(yMovement === 'up'){
-      // 	leavingSection -= 1; 
-      // }			
-      // if(yMovement === 'down'){
-      // 	leavingSection += 1; 
-      // }			
-
+  
       
       $.isFunction( options.onLeave ) && options.onLeave.call( this, leavingSection, yMovement);
-      console.log($(scrolledElement));
-      $(scrolledElement).animate(
-        scrollOptions 
-        , options.scrollingSpeed, options.easing, function() {
-          //callback
-          $.isFunction( options.afterLoad ) && options.afterLoad.call( this, anchorLink, (sectionIndex + 1));
-      
-          setTimeout(function(){
-            isMoving = false;
-            $.isFunction( callback ) && callback.call( this);
-          }, scrollDelay);
-        });
 
-      
+      // console.log(scrollOptions);
+      console.log('sectionIndex:'+leavingSection);
+
+      $('#section'+leavingSection).fadeOut();
+      	  $(scrolledElement).animate(
+            scrollOptions 
+            , 0, options.easing, function() {
+              //callback
+              $.isFunction( options.afterLoad ) && options.afterLoad.call( this, anchorLink, (sectionIndex + 1));
+	      $("#section"+sectionIndex).fadeIn('slow');
+              setTimeout(function(){
+	  	isMoving = false;
+	  	$.isFunction( callback ) && callback.call( this);
+              }, scrollDelay);
+            });
+
+      // $("#section"+sectionIndex).fadeOut('slow',
+      // 	function(){
+      // 	  $(scrolledElement).animate(
+      //       scrollOptions 
+      //       , 0, options.easing, function() {
+      //         //callback
+      //         $.isFunction( options.afterLoad ) && options.afterLoad.call( this, anchorLink, (sectionIndex + 1));
+      // 	      $("#section"+sectionIndex).fadeIn('slow');
+      //         setTimeout(function(){
+      // 		isMoving = false;
+      // 		$.isFunction( callback ) && callback.call( this);
+      //         }, scrollDelay);
+      //       });
+      // 	}
+      // );
+
+
+
+
+
       //flag to avoid callingn `scrollPage()` twice in case of using anchor links
       lastScrolledDestiny = anchorLink;
       
@@ -757,7 +773,6 @@
      * When resizing is finished, we adjust the slides sizes and positions
      */
     function doneResizing() {
-      console.log("call resizing");
       var windowsWidtdh = $(window).width();
       var windowsHeight = $(window).height();
 

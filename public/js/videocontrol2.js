@@ -8,8 +8,6 @@ function ff(video){
 }
 
 function handleScroll(index,direction) {
-  console.log(index);
-  console.log(direction);
   var video1 = $('#video1').get(0);
   var video2 = $('#video2').get(0);
   var video3 = $('#video3').get(0);
@@ -21,7 +19,7 @@ function handleScroll(index,direction) {
   $('#note3').hide();
   $('#note4').hide();
   $('#note5').hide();
-
+  
   switch(index)  {
   case 0:
     video1.currentTime=0;
@@ -80,11 +78,17 @@ function addEventListener() {
     var video3 = $('#video3').get(0);
     var video4 = $('#video4').get(0);
     var video5 = $('#video5').get(0);
-    video1.addEventListener('ended',function(clip){console.log("video1 end");$('#note1').fadeIn(500,"swing");},false);
-    video2.addEventListener('ended',function(clip){console.log("video2 end");$('#note2').fadeIn();},false);
-    video3.addEventListener('ended',function(clip){console.log("video3 end");$('#note3').fadeIn();},false);
-    video4.addEventListener('ended',function(clip){console.log("video4 end");$('#note4').fadeIn();},false);
-    video5.addEventListener('ended',function(clip){console.log("video5 end");$('#note5').fadeIn();},false);
+    video1.addEventListener('ended',function(){console.log("video1 end");$('#note1').show();},false);
+    video2.addEventListener('ended',function(){console.log("video2 end");$('#note2').show();},false);
+    video3.addEventListener('ended',function(){console.log("video3 end");$('#note3').show();},false);
+    video4.addEventListener('ended',function(){console.log("video4 end");$('#note4').show();},false);
+    video5.addEventListener('ended',function(){console.log("video5 end");$('#note5').show();},false);
+    video1.addEventListener('timeupdate',function(){var cur=$(this).get(0).currentTime;var total=$(this).get(0).duration;if(total-cur<1.5){$('#note1').fadeIn('slow');}},false);
+    video2.addEventListener('timeupdate',function(){var cur=$(this).get(0).currentTime;var total=$(this).get(0).duration;if(total-cur<3){$('#note2').fadeIn('slow');}},false);
+    video3.addEventListener('timeupdate',function(){var cur=$(this).get(0).currentTime;var total=$(this).get(0).duration;if(total-cur<2){$('#note3').fadeIn('slow');}},false);
+    video4.addEventListener('timeupdate',function(){var cur=$(this).get(0).currentTime;var total=$(this).get(0).duration;if(total-cur<2){$('#note4').fadeIn('slow');}},false);
+    video5.addEventListener('timeupdate',function(){var cur=$(this).get(0).currentTime;var total=$(this).get(0).duration;if(total-cur<2){$('#note5').fadeIn('slow');}},false);
+
   });
 }
 
