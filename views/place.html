@@ -194,7 +194,8 @@
     .ui-autocomplete .ui-menu-item a.ui-state-hover {
       background-color: #D5E5F4;
       color: #161A1C;
-    }
+      }
+    .req {font-size: 120%;color:red;}     
 </style>
 
 <form id="form" class="form-horizontal">
@@ -206,7 +207,7 @@
 
 <!-- Text input-->
 <div class="control-group">
-  <label class="control-label" for="email">Email</label>
+  <label class="control-label" for="email"> <abbr class="req" title="required">*</abbr>Email</label>
   <div class="controls">
     <input id="email" name="email" type="text" placeholder="" class="input-xlarge" required>
     <p class="help-block">Please leave correct Email address to receive order confirmation</p>
@@ -216,7 +217,7 @@
 
 <!-- Text input-->
 <div class="control-group">
-  <label class="control-label" for="firstname">First Name</label>
+  <label class="control-label" for="firstname"><abbr class="req" title="required">*</abbr>First Name</label>
   <div class="controls">
     <input id="firstname" name="firstname" type="text" placeholder="" class="input-xlarge" required>
     
@@ -225,7 +226,7 @@
 
 <!-- Text input-->
 <div class="control-group">
-  <label class="control-label" for="lastname">Last Name</label>
+  <label class="control-label" for="lastname"><abbr class="req" title="required">*</abbr>Last Name</label>
   <div class="controls">
     <input id="lastname" name="lastname" type="text" placeholder="" class="input-xlarge" required>
   </div>
@@ -234,7 +235,7 @@
 
 
 <div class="control-group">
-  <label class="control-label" for="country">Country</label>
+  <label class="control-label" for="country"><abbr class="req" title="required">*</abbr>Country</label>
   <div class="controls">
     <select name="Country" id="country-selector" autocorrect="on" autocomplete="on">
       <option value="Afghanistan" data-alternative-spellings="AF افغانستان">Afghanistan</option>
@@ -492,7 +493,7 @@
 
 <!-- Text input-->
 <div class="control-group">
-  <label class="control-label" for="state">State/Province</label>
+  <label class="control-label" for="state"><abbr class="req" title="required">*</abbr>State/Province</label>
   <div class="controls">
     <input id="state" name="state" type="text" placeholder="" class="input-xlarge" required>
     
@@ -502,7 +503,7 @@
 
 <!-- Text input-->
 <div class="control-group">
-  <label class="control-label" for="city">City</label>
+  <label class="control-label" for="city"><abbr class="req" title="required">*</abbr>City</label>
   <div class="controls">
     <input id="city" name="city" type="text" placeholder="" class="input-xlarge" required>
     
@@ -511,7 +512,7 @@
 
 <!-- Text input-->
 <div class="control-group">
-  <label class="control-label" for="zipcode">Zip Code</label>
+  <label class="control-label" for="zipcode"><abbr class="req" title="required">*</abbr>Zip Code</label>
   <div class="controls">
     <input id="zipcode" name="zipcode" type="text" placeholder="" class="input-xlarge" required>
     
@@ -520,7 +521,14 @@
 
 <!-- Text input-->
 <div class="control-group">
-  <label class="control-label" for="addr">Address</label>
+  <label class="control-label" for="addr1"><abbr class="req" title="required">*</abbr>Address</label>
+  <div class="controls">
+    <input id="addr" name="addr" type="text" placeholder="" class="input-xlarge" required>
+  </div>
+</div>
+
+<div class="control-group">
+  <label class="control-label" for="addr2"></label>
   <div class="controls">
     <input id="addr" name="addr" type="text" placeholder="" class="input-xlarge" required>
   </div>
@@ -528,7 +536,7 @@
 
 
 <div class="control-group">
-  <label class="control-label" for="captcha">Verification Code</label>
+  <label class="control-label" for="captcha"><abbr class="req" title="required">*</abbr>Verification Code</label>
   <div class="controls">
     {{{ recaptcha_form }}}
     <p id="recaptcha_fail" class="help-block hide" style="color:red">Recaptcha Failed</p>
@@ -540,6 +548,7 @@
   <label class="control-label" for="submit"></label>
   <div class="controls">
     <button id="submit" type="submit" name="submit" data-dismiss="modal" class="btn btn-primary">Place Order</button>
+    <p class="help-block"><abbr class="req" title="required">*</abbr> Indicates required field.</p>
   </div>
 </div>
 
