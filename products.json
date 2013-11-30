@@ -1,2 +1,2 @@
-{ "_id" : { "$oid" : "528ba0460e31891926079fe1" }, "name" : "Block Erupter Cube", "name_short" : "box", "price" : 500, "detail" : "TODO", "available" : true }
-{ "_id" : { "$oid" : "528f2ccfb24937344be2921b" }, "name" : "Power Supply for Block Erupter Cube", "name_short" : "PSU", "price" : 20, "detail" : "TODO", "available" : false }
+{ "_id" : { "$oid" : "528ba0460e31891926079fe1" }, "name" : "Block Erupter Cube", "name_short" : "box", "price" : 500, "detail" : "<dl><dt><b>Package Dimensions:</b></dt><dd>- 18.6cm*19.6cm*17.7cm</dd><dt><b>Weight:</b></dt><dd>- 2.8kg</dd></dl>", "available" : true }
+{ "_id" : { "$oid" : "528f2ccfb24937344be2921b" }, "name" : "PSU Kit for Block Erupter Cube", "name_short" : "PSU", "price" : 20, "detail" : "This item will be released on December.", "available" : false }
