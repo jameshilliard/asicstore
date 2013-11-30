@@ -36,6 +36,13 @@ module.exports = {
       callback(null,products);
     });
   },
+  
+  findOrder:function(hash,callback) {
+    console.log("Finding Order No. %s",JSON.stringify(hash));
+    Order.findOne({hash:hash},function(err,order){
+      callback(null,order);
+    });
+  },
 
   saveOrder:function(products,order,callback) {
     console.log("Processing order:");
