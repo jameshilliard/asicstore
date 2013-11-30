@@ -20,6 +20,8 @@ var cart = require('./routes/cart');
 var checkout = require('./routes/checkout');
 var moment = require('moment');
 
+
+
 module.exports = function(app,passport) {
   db.getProducts(function(err,products){
     if(err) {console.log("Can't get products");process.exit();};
@@ -70,9 +72,13 @@ module.exports = function(app,passport) {
 		   });
     });
     
-    app.get('/order',function(req,res) {
-      res.render('order', {'recaptcha_form': recaptcha.toHTML()});
+    app.get('/order/:hash',function(req,res) {
+      db.findOrder(req.param('hash'),function(err,order){
+	console.log(order);
+	res.render('order',{order:order});
+      });
     });
+
 
     // app.post('/order', function(req, res) {
     //   var data = {
