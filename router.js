@@ -64,8 +64,10 @@ module.exports = function(app,passport) {
     app.post('/placeorder',function(req,res) {
       var order = req.body;
       console.log(order);
-      db.saveOrder(products,order);
-      res.send('complete');
+      db.saveOrder(products,order,
+		   function(error,saved){
+		     res.send(saved.hash);
+		   });
     });
     
     app.get('/order',function(req,res) {

@@ -19,6 +19,9 @@ function searchJSONArray(arr,key,val){
   return {};
 }
 
+var Hashids = require('hashids');
+var hashids = new Hashids('block erupter store');
+
 module.exports = {
   startup: function() {
     mongoose.connect('mongodb://localhost:27017/asicstore');
@@ -35,6 +38,8 @@ module.exports = {
   },
 
   saveOrder:function(products,order,callback) {
+    console.log("Processing order:");
+    console.log(order);
     var productsArray = order.products.split("|");
     var productDetails = 
 	  productsArray.map(function(x){
@@ -60,7 +65,8 @@ module.exports = {
 	last:order.lastname
       },
       address:{
-	addr:order.addr,
+	addr1:order.addr1,
+	addr2:order.addr2,
 	city:order.city,
 	state:order.state,
 	country:order.country,
@@ -70,13 +76,15 @@ module.exports = {
       total:total
     });
     
+    var hash = hashids.encrypt(+new Date()+JSON.stringify(saved).length);
+    saved.hash = hash;
+
     console.log(saved);
     
-    saved.save();
-    // saved.save(function(err){
-    //   if(err) {throw err;}
-    //   callback(null,saved);
-    // });
+    saved.save(function(err){
+      if(err) {throw err;}
+      callback(null,saved);
+    });
 
   },
   

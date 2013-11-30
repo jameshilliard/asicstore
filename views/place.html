@@ -153,10 +153,14 @@
       order.products = products;
       console.log(order);
       $.post('/placeorder',order,function(res){
-        if(res=='complete') {
-          $('#confirm-msg').html("<h1>Your Order is Received</h1>");
+        console.log(res);
+        var msg = "<h2>Confirmation Number: <font color='red'>"+res+"</font></h2>";
+        if(res) {
+          $('#order-confirm').html('<div class="modal-header"><h1>Your Order is Received</h1></div>'
++   '<div class="modal-body"><div class="box-content"><div id="confirm-msg">' + msg + '</div><div class="pull-right">'
++   '<table><tr><td><div class="controls"><button id="goback" name="goback" class="btn btn-large btn-primary" onclick="location.href=\'/store\'">Go Back To Store</button></div></td></tr></table></div></div></div>');
           emptyCart();
-          setTimeout("location.href = '/store';",1500);
+          fillCart();
         }
       });
    });
@@ -237,7 +241,7 @@
 <div class="control-group">
   <label class="control-label" for="country"><abbr class="req" title="required">*</abbr>Country</label>
   <div class="controls">
-    <select name="Country" id="country-selector" autocorrect="on" autocomplete="on" style="width:280px">
+    <select name="country" id="country-selector" autocorrect="on" autocomplete="on" style="width:280px">
       <option value="Afghanistan" data-alternative-spellings="AF افغانستان">Afghanistan</option>
       <option value="Åland Islands" data-alternative-spellings="AX Aaland Aland" data-relevancy-booster="0.5">Åland Islands</option>
       <option value="Albania" data-alternative-spellings="AL">Albania</option>
@@ -523,14 +527,14 @@
 <div class="control-group">
   <label class="control-label" for="addr1"><abbr class="req" title="required">*</abbr>Address</label>
   <div class="controls">
-    <input id="addr" name="addr" type="text" placeholder="" class="input-xlarge" required>
+    <input id="addr1" name="addr1" type="text" placeholder="" class="input-xlarge" required>
   </div>
 </div>
 
 <div class="control-group">
   <label class="control-label" for="addr2"></label>
   <div class="controls">
-    <input id="addr" name="addr" type="text" placeholder="" class="input-xlarge" required>
+    <input id="addr2" name="addr2" type="text" placeholder="" class="input-xlarge">
   </div>
 </div>
 

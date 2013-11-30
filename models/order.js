@@ -2,17 +2,19 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var OrderSchema = new Schema({
+  hash: {type:String,required:true},
   name : { 
     first: { type: String, required: true },
     last: { type: String, required: true }
   },
   
   address : {       
-    addr: {type:String, required:false},
-    city: {type:String, required:false},
-    state: {type:String, required:false},
-    country: {type:String, required:false},
-    zipcode: {type:String, required:false}
+    addr1: {type:String, required:true},
+    addr2: {type:String, required:false},
+    city: {type:String, required:true},
+    state: {type:String, required:true},
+    country: {type:String, required:true},
+    zipcode: {type:String, required:true}
   },
   
   email: { type: String, required: true},

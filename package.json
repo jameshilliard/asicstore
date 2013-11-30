@@ -15,7 +15,8 @@
         "querystring" : "*",
 	"moment" : "*",
 	"re-captcha" : "*",
-	"nodemailer" : "*"
+	"nodemailer" : "*",
+	"hashids" : "*"
     }
 }
 
