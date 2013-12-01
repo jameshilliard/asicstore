@@ -1,30 +1,45 @@
-<div>
-Order Number: 1000 
-Order Date: Friday 30 April, 2004 
-Payment Method: Secure Credit Card
+<div style="width:600px;height:800px">
+  <table cellpadding='3'>
+    <tr>
+      <td align='right'><h4>Order Number</h4></td><td>{{hash}}</td>
+    </tr>
+    <tr>
+      <td align='right'><h4>Order Date</h4></td><td>{{date}}</td>
+    </tr>
+  </table>
 
-Products 
------------------------------------------------------- 
-2 x Dual Super Bright 12 Inch Cathode Kit = $19.98 
-Switch None 
-Color Red 
-2 x Dual Super Bright 12 Inch Cathode Kit = $19.98 
-Color Blue 
-Switch None 
------------------------------------------------------- 
-Sub-Total: $39.96 
-United Parcel Service (Ground): $11.42 
-Total: $51.38
+  <br>
+  
+  
+  <h3>{{name.first}}  {{name.last}}</h3>
+  <h4>{{email}}</h4>
+  <br>
 
-Shipping Address: 
-Shmoe Joe Lo 
-123 Pine St. 
-New York, NY 10001 
-United States
+  <div>
+    <h3><font color="green">Shipping Address</font></h3>
+    <table>
+      <tr><td>{{address.addr1}}</td></tr>
+      <tr><td>{{address.addr2}}</td></tr>
+      <tr><td>{{address.city}}</td></tr>
+      <tr><td>{{address.state}}  {{address.zipcode}}</td></tr>
+      <tr><td>{{address.country}}</td></tr>
+    </table>    
+  </div>
+  <br>
 
-Billing Address: 
-Shmoe Joe Lo 
-123 Pine St. 
-New York, NY 10001 
-United States
+
+  <div>
+    <h3><font color="green">Order Details</font></h3>
+    <table cellpadding='5'>
+      <tr><th align='left'>Item</th><th align='left'>Quantity</th><th align='left'>Unit Price</th></tr>
+      {{#items}}
+      <tr><td>{{name}}</td><td>{{quantity}}</td><td>${{unitprice}}</td></tr>
+      {{/items}}
+      <tr>
+        <td></td><td><b>Total</b></td><td>${{total}}</td>
+      </tr>
+    </table>
+  </div>
+
 </div>
+

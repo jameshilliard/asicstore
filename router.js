@@ -75,7 +75,9 @@ module.exports = function(app,passport) {
     app.get('/order/:hash',function(req,res) {
       db.findOrder(req.param('hash'),function(err,order){
 	console.log(order);
-	res.render('order',{order:order});
+	var date = moment( parseInt(order._id.toString().substring(0,8), 16 ) * 1000 );
+	order.date=date.format('ddd, MMM d YYYY, H:mm:ss');
+	res.render('order',order);
       });
     });
 

@@ -50,11 +50,15 @@
 	  </a>
 	  <span id="storeBranding"><a class="brand" href="/">Block Erupter</a></span>
 
+	  <div class="navbar-search pull-right">
+            <input id="order-input" type="text" class="search-query" style="width: 200px;height:12px" placeholder="Input Order Number to search">
+          </div>
+
 	  <div class="btn-group pull-right">
 	    <i class="icon-shopping-cart icon-white"></i>
 	    <a id="open-cart" class="open noboxshadow dropdown-toggle" data-toggle="dropdown" href="#" style="box-shadow:none;color:FF8C00;">My Cart</a>
 	    <span id="cartinfo">
-	      <span id="cartqty">(0 items)</span>&nbsp;<span id="cartprice">฿0.00</span>
+	      <span id="cartqty">(0 items)</span>&nbsp;<span id="cartprice">$0.00</span>
 	    </span>
 	    <ul class="dropdown-menu minicart">
 	      <li>
@@ -68,6 +72,8 @@
 	      </li>
 	    </ul>
 	  </div>
+         
+
 	  <div class="nav-collapse collapse">
 	    <ul class="nav" id="mainMenuLinks">
               <li><a href="/store">Store</a></li>
@@ -100,7 +106,13 @@
 
     <script src="/js/bootstrap/bootstrap.min.js"></script>
 
-
+    <script>
+      $("#order-input").keyup(function (e) {
+        if (e.keyCode == 13) {
+           location.href=("/order/"+$("#order-input").val());
+        }
+      });
+    </script>
     <script>
       $('.flexslider').flexslider({
       animation: "slide",
