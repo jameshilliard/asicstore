@@ -45,8 +45,6 @@ module.exports = {
   },
 
   saveOrder:function(products,order,callback) {
-    console.log("Processing order:");
-    console.log(order);
     var productsArray = order.products.split("|");
     var productDetails = 
 	  productsArray.map(function(x){
@@ -86,8 +84,6 @@ module.exports = {
     var hash = hashids.encrypt(+new Date()+JSON.stringify(saved).length);
     saved.hash = hash;
 
-    console.log(saved);
-    
     saved.save(function(err){
       if(err) {throw err;}
       callback(null,saved);

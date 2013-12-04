@@ -65,9 +65,9 @@ module.exports = function(app,passport) {
 
     app.post('/placeorder',function(req,res) {
       var order = req.body;
-      console.log(order);
       db.saveOrder(products,order,
 		   function(error,saved){
+		     mailer.toCustomer(saved);
 		     res.send(saved.hash);
 		   });
     });

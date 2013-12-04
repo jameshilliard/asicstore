@@ -4,7 +4,10 @@ var smtpTransport = nodemailer.createTransport("Sendmail", "/usr/sbin/sendmail")
 
 var hogan = require("hogan.js");
 
-var templ_customer = hogan.compile("Hello World!");
+var fs = require('fs');
+
+var templ_customer_raw = fs.readFileSync("views/order.html").toString();
+var templ_customer = hogan.compile(templ_customer_raw);
 
 var templ_admin = hogan.compile("<h3>{{date}}: Server Down</h3><table>{{#servers}}<tr><td>{{url}}</td></tr>{{/servers}}</table>");
 
@@ -37,8 +40,11 @@ function send_html(addr,subject,html) {
 var moment = require('moment');
 
 function toCustomer(order) {
+  console.log(order);
+  console.log("sending mail to customer");
   var html = templ_customer.render(order);
-  send_html(order.email,html);
+  var subject = "Order Confirmation No. "+order.hash;
+  send_html(order.email,subject,html);
 }
 
 
