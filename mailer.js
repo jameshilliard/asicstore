@@ -6,6 +6,8 @@ var hogan = require("hogan.js");
 
 var fs = require('fs');
 
+var moment = require('moment');
+
 var templ_customer_raw = fs.readFileSync("views/order.html").toString();
 var templ_customer = hogan.compile(templ_customer_raw);
 
@@ -42,6 +44,8 @@ var moment = require('moment');
 function toCustomer(order) {
   console.log(order);
   console.log("sending mail to customer");
+  var date = moment( parseInt(order._id.toString().substring(0,8), 16 ) * 1000 );
+  order.date=date.format('ddd, MMM d YYYY, H:mm:ss');
   var html = templ_customer.render(order);
   var subject = "Order Confirmation No. "+order.hash;
   send_html(order.email,subject,html);
