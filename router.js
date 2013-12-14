@@ -44,6 +44,10 @@ module.exports = function(app,passport) {
       res.render('main',{'products':products});
     });
 
+    app.get('/retailer',function(req,res) {
+      res.render('retailer');
+    });
+
     app.get('/placeorder',function(req,res) {
       res.render('place', {'products':products,'recaptcha_form': recaptcha.toHTML()});
     });
@@ -84,6 +88,13 @@ module.exports = function(app,passport) {
       });
     });
 
+    app.get('/orders/:page?',function(req,res){
+      var page = req.param('page')?parseInt(page):1;
+      console.log("Get page %d",page);
+      db.getOrdersByPage(page,function(err,orders){
+	res.send("OK");
+      });
+    });
 
     // app.post('/order', function(req, res) {
     //   var data = {
